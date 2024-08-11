@@ -91,7 +91,7 @@ function Map() {
           attributionControl={false}
           zoomControl={false}
         >
-          <TileLayer url="assets/mapStyles/styleAtlas/{z}/{x}/{y}.jpg" />
+          <TileLayer url="./html/assets/mapStyles/styleAtlas/{z}/{x}/{y}.jpg" />
 
           <GtaVMapContainer />
 
