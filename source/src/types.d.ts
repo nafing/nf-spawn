@@ -25,6 +25,7 @@ type Config = {
 type Spawns = {
   lastLocation: Vector4;
   apartments: Apartment[];
+  properties: Apartment[];
 };
 
 type Vector3 = {
@@ -34,6 +35,7 @@ type Vector3 = {
 };
 
 interface Apartment {
+  id: number;
   interior: string;
   label: string;
   description: string;
@@ -55,4 +57,9 @@ type Vector4 = {
 interface StatePlayerLocation {
   lastLocation: Vector4 | null;
   setLastLocation: (lastLocation: Vector4) => void;
+}
+
+interface StateProperties {
+  properties: Apartment[];
+  setProperties: (properties: Apartment[]) => void;
 }

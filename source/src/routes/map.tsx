@@ -5,7 +5,13 @@ import "leaflet/dist/leaflet.css";
 import { renderToString } from "react-dom/server";
 import { IconHomeFilled, IconPointFilled } from "@tabler/icons-react";
 import { Button } from "@mantine/core";
-import { emitNet, useApartments, usePlayerLocation, useToggle } from "@/hooks";
+import {
+  emitNet,
+  useApartments,
+  usePlayerLocation,
+  useProperties,
+  useToggle,
+} from "@/hooks";
 
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -55,6 +61,7 @@ function Map() {
   const { setOpen } = useToggle();
   const { lastLocation } = usePlayerLocation();
   const { apartments } = useApartments();
+  const { properties } = useProperties();
 
   const GtaVMapContainer = () => {
     const map = useMap();
@@ -102,6 +109,32 @@ function Map() {
                     emitNet({
                       eventName: "selectApartment",
                       payload: i,
+                      handler() {
+                        setOpen(false);
+                      },
+                    });
+                  }}
+                >
+                  Select Apartment
+                </Button>
+              </Popup>
+            </Marker>
+          ))}
+
+          {properties.map((item, i) => (
+            <Marker
+              key={i}
+              position={[item.enter.y, item.enter.x]}
+              icon={customIcon("apartment")}
+            >
+              <Popup>
+                <div className="popup-title">{item.label}</div>
+                <div className="popup-desc">{item.description}</div>
+                <Button
+                  onClick={() => {
+                    emitNet({
+                      eventName: "spawnProperty",
+                      payload: item,
                       handler() {
                         setOpen(false);
                       },

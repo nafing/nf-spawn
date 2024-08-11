@@ -41,3 +41,8 @@ export const useApartments = create<StateApartments>((set) => ({
   apartments: [],
   setApartments: (apartments) => set({ apartments }),
 }));
+
+export const useProperties = create<StateProperties>((set) => ({
+  properties: [],
+  setProperties: (properties) => set({ properties }),
+}));

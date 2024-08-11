@@ -10,6 +10,7 @@ import {
   useApartments,
   useConfig,
   usePlayerLocation,
+  useProperties,
   useToggle,
 } from "@/hooks";
 import { useShallowEffect } from "@mantine/hooks";
@@ -23,6 +24,8 @@ function RootComponent() {
   const { config, setConfig } = useConfig();
   const { setLastLocation } = usePlayerLocation();
   const { setApartments } = useApartments();
+  const { setProperties } = useProperties();
+
   const navigate = Route.useNavigate();
 
   useShallowEffect(() => {
@@ -39,8 +42,9 @@ function RootComponent() {
   onNet({
     eventName: "openSpawn",
     handler(payload: Spawns) {
-      setLastLocation(payload.lastLocation);
-      setApartments(payload.apartments);
+      setLastLocation(payload.lastLocation || null);
+      setApartments(payload.apartments || []);
+      setProperties(payload.properties || []);
       setOpen(true);
       navigate({
         to: "/map",

@@ -18,6 +18,7 @@ RegisterNuiCallback('isLoaded', function(_, cb)
 end)
 
 function Spawn:OpenSpawn(isNew)
+    DoScreenFadeOut(0)
     SetNuiFocus(true, true)
     SendNUIMessage({
         eventName = 'openSpawn',
@@ -25,7 +26,7 @@ function Spawn:OpenSpawn(isNew)
             apartments = Config.Apartments,
         } or {
             lastLocation = exports.qbx_core:GetPlayerData().position,
-            apartments = {},
+            properties = lib.callback.await('nf-spawn:server:getOwnedProperties', false),
         }
     })
 end
@@ -50,17 +51,48 @@ RegisterNuiCallback('selectApartment', function(payload, cb)
 
     SetEntityCoords(PlayerPedId(), apartment.enter.x, apartment.enter.y, apartment.enter.z - 2.0, false, false, false,
         false)
+    Citizen.Wait(100)
     TriggerServerEvent('qbx_properties:server:apartmentSelect', payload)
+
+
+    TriggerServerEvent('QBCore:Server:OnPlayerLoaded')
+    TriggerEvent('QBCore:Client:OnPlayerLoaded')
+
+    Citizen.Wait(250)
+    DoScreenFadeIn(250)
 
     cb(0)
 end)
 
+RegisterNuiCallback('spawnProperty', function(payload, cb)
+    SetNuiFocus(false, false)
+
+    SetEntityCoords(PlayerPedId(), payload.enter.x, payload.enter.y, payload.enter.z, false, false, false,
+        false)
+    Citizen.Wait(100)
+    TriggerServerEvent('qbx_properties:server:enterProperty', payload)
+
+    TriggerServerEvent('QBCore:Server:OnPlayerLoaded')
+    TriggerEvent('QBCore:Client:OnPlayerLoaded')
+
+    Citizen.Wait(250)
+    DoScreenFadeIn(250)
+
+    cb(0)
+end)
+
+
 RegisterNuiCallback('spawnAtLastLocation', function(payload, cb)
     SetNuiFocus(false, false)
 
-
     SetEntityCoords(PlayerPedId(), payload.x, payload.y, payload.z, false, false, false, false)
     SetEntityHeading(PlayerPedId(), payload.w)
+
+
+    TriggerServerEvent('QBCore:Server:OnPlayerLoaded')
+    TriggerEvent('QBCore:Client:OnPlayerLoaded')
+
+    DoScreenFadeIn(150)
 
     cb(0)
 end)
