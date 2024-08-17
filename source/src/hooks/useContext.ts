@@ -33,7 +33,7 @@ export const useConfig = create<StateConfig>((set, get) => ({
 }));
 
 export const usePlayerLocation = create<StatePlayerLocation>((set) => ({
-  lastLocation: null,
+  lastLocation: { x: 0, y: 0 },
   setLastLocation: (lastLocation) => set({ lastLocation }),
 }));
 

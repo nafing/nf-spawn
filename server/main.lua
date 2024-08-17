@@ -29,3 +29,5 @@ lib.callback.register('nf-spawn:server:getOwnedProperties', function(source)
 
     return properties
 end)
+
+---1011.0776, -1761.8571, 6.8905, 134.0261

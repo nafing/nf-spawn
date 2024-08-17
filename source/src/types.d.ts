@@ -47,16 +47,14 @@ interface StateApartments {
   setApartments: (apartments: Apartment[]) => void;
 }
 
-type Vector4 = {
+type Vector2 = {
   x: number;
   y: number;
-  z: number;
-  w: number;
 };
 
 interface StatePlayerLocation {
-  lastLocation: Vector4 | null;
-  setLastLocation: (lastLocation: Vector4) => void;
+  lastLocation: Vector2;
+  setLastLocation: (lastLocation: Vector2) => void;
 }
 
 interface StateProperties {
