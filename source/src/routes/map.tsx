@@ -56,7 +56,7 @@ function Map() {
   });
 
   return (
-    <BackgroundImage src="./map.png" h="100vh">
+    <BackgroundImage src="/html/map.png" h="100vh">
       {firstApartments.map((apartment, index) => (
         <Popover
           width={240}
@@ -201,7 +201,7 @@ function Map() {
             style={styles}
           >
             <Card.Section>
-              <Image src={`./${selectedProperty.apartmentName}.png`} w={420} />
+              <Image src={`/html/${selectedProperty.apartmentName}.png`} w={420} />
             </Card.Section>
 
             <Text fz="xl" fw={600} mt="xs">
@@ -248,7 +248,7 @@ function Map() {
             style={styles}
           >
             <Card.Section>
-              <Image src={`./${selectedSpawn.label}.png`} w={420} />
+              <Image src={`/html/${selectedSpawn.label}.png`} w={420} />
             </Card.Section>
 
             <Text fz="xl" fw={600} mt="xs">
