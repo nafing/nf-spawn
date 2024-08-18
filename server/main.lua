@@ -1,5 +1,3 @@
-exports['nf-core']:CheckVersion("nf-spawn")
-
 lib.callback.register('nf-spawn:server:getOwnedProperties', function(source)
     local _source = source
 

@@ -20,13 +20,13 @@ server_scripts {
 	'server/*.lua'
 }
 
-ui_page 'http://localhost:5173/'
+-- ui_page 'http://localhost:5173/'
 
--- ui_page 'html/index.html'
--- files {
--- 	'html/*.*',
--- 	'html/**/*.*',
--- }
+ui_page 'html/index.html'
+files {
+	'html/*.*',
+	'html/**/*.*',
+}
 
 lua54 'yes'
 use_experimental_fxv2_oal 'yes'

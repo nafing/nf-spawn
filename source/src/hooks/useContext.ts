@@ -32,17 +32,15 @@ export const useConfig = create<StateConfig>((set, get) => ({
   },
 }));
 
-export const usePlayerLocation = create<StatePlayerLocation>((set) => ({
-  lastLocation: { x: 0, y: 0 },
+export const useStaticLocations = create<StaticLocations>((set) => ({
+  defaultSpawns: [],
+  firstApartments: [],
+
+  setDefaultSpawns: (defaultSpawns) => set({ defaultSpawns }),
+  sesFirstApartments: (firstApartments) => set({ firstApartments }),
+}));
+
+export const useCharacterLocations = create<CharacterLocations>((set) => ({
+  lastLocation: null,
   setLastLocation: (lastLocation) => set({ lastLocation }),
-}));
-
-export const useApartments = create<StateApartments>((set) => ({
-  apartments: [],
-  setApartments: (apartments) => set({ apartments }),
-}));
-
-export const useProperties = create<StateProperties>((set) => ({
-  properties: [],
-  setProperties: (properties) => set({ properties }),
 }));

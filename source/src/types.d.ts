@@ -1,3 +1,21 @@
+type Vector3 = {
+  x: number;
+  y: number;
+  z: number;
+};
+
+type Vector4 = {
+  x: number;
+  y: number;
+  z: number;
+  w: number;
+};
+
+type UIPosition = {
+  top: string;
+  left: string;
+};
+
 interface IsLoaded {
   isLoaded: boolean;
   config: Config;
@@ -15,7 +33,6 @@ interface StateConfig {
 }
 
 type Config = {
-  maxCharacters: number;
   colors: {
     [key: string]: string;
   };
@@ -23,41 +40,40 @@ type Config = {
 };
 
 type Spawns = {
-  lastLocation: Vector4;
-  apartments: Apartment[];
-  properties: Apartment[];
+  defaultSpawns: DefaultSpawns[];
+  firstApartments: FirstApartments[];
+
+  lastLocation: Vector4 | null;
 };
 
-type Vector3 = {
-  x: number;
-  y: number;
-  z: number;
-};
+interface StaticLocations {
+  defaultSpawns: DefaultSpawns[];
+  firstApartments: FirstApartments[];
 
-interface Apartment {
-  id: number;
-  interior: string;
+  setDefaultSpawns: (defaultSpawns: DefaultSpawns[]) => void;
+  sesFirstApartments: (firstApartments: FirstApartments[]) => void;
+}
+
+type DefaultSpawns = {
   label: string;
   description: string;
-  enter: Vector3;
-}
-
-interface StateApartments {
-  apartments: Apartment[];
-  setApartments: (apartments: Apartment[]) => void;
-}
-
-type Vector2 = {
-  x: number;
-  y: number;
+  location: Vector4;
+  ui: UIPosition;
 };
 
-interface StatePlayerLocation {
-  lastLocation: Vector2;
-  setLastLocation: (lastLocation: Vector2) => void;
+interface FirstApartments {
+  label: string;
+  description: string;
+  interior: {
+    [key: string]: {
+      index: number;
+      location: Vector3;
+    };
+  };
+  ui: UIPosition;
 }
 
-interface StateProperties {
-  properties: Apartment[];
-  setProperties: (properties: Apartment[]) => void;
+interface CharacterLocations {
+  lastLocation: Vector4 | null;
+  setLastLocation: (lastLocation: Vector4 | null) => void;
 }
