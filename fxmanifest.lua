@@ -4,7 +4,7 @@ game 'gta5'
 name 'nf-spawn'
 description 'Spawn'
 author 'nafing'
-version '1.0.0'
+version '1.0.0a'
 
 shared_scripts {
 	'@ox_lib/init.lua',

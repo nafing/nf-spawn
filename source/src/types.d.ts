@@ -55,6 +55,7 @@ interface StaticLocations {
 }
 
 type DefaultSpawns = {
+  id: string;
   label: string;
   description: string;
   location: Vector4;

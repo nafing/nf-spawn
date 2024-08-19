@@ -46,10 +46,12 @@ function Map() {
 
   const [openedSelectSpawn, handlerSpawn] = useDisclosure();
   const [selectedSpawn, setSelectedSpawn] = useState<{
+    id: string;
     label: string;
     description: string;
     location: Vector4;
   }>({
+    id: "",
     label: "",
     description: "",
     location: { x: 0, y: 0, z: 0, w: 0 },
@@ -123,6 +125,7 @@ function Map() {
             handlerSpawn.open();
 
             setSelectedSpawn({
+              id: spawn.id,
               label: spawn.label,
               description: spawn.description,
               location: spawn.location,
@@ -164,6 +167,7 @@ function Map() {
                   eventName: "spawnAt",
                   payload: selectedSpawn.location,
                   handler: () => {
+                    handlerSpawn.close();
                     setOpen(false);
                   },
                 });
@@ -201,7 +205,10 @@ function Map() {
             style={styles}
           >
             <Card.Section>
-              <Image src={`/html/${selectedProperty.apartmentName}.png`} w={420} />
+              <Image
+                src={`/html/${selectedProperty.apartmentName}.png`}
+                w={420}
+              />
             </Card.Section>
 
             <Text fz="xl" fw={600} mt="xs">
@@ -248,7 +255,7 @@ function Map() {
             style={styles}
           >
             <Card.Section>
-              <Image src={`/html/${selectedSpawn.label}.png`} w={420} />
+              <Image src={`/html/${selectedSpawn.id}.png`} w={420} />
             </Card.Section>
 
             <Text fz="xl" fw={600} mt="xs">
@@ -271,6 +278,7 @@ function Map() {
               eventName: "spawnAt",
               payload: lastLocation,
               handler: () => {
+                handlerSpawn.close();
                 setOpen(false);
               },
             });

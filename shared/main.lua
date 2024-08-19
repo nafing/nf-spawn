@@ -12,6 +12,7 @@ Config.UI = {
 
 Config.DefaultSpawns = {
     {
+        id = "Legion_Square",
         label = 'Legion Square',
         description = 'The heart of Los Santos, where all the action happens.',
         location = vec4(195.17, -933.77, 29.7, 144.5),
@@ -21,6 +22,7 @@ Config.DefaultSpawns = {
         }
     },
     {
+        id = "Paleto_Bay",
         label = 'Paleto Bay',
         description = 'A quiet town with a lot of potential, perfect for a fresh start.',
         location = vec4(80.35, 6424.12, 31.67, 45.5),
@@ -30,6 +32,7 @@ Config.DefaultSpawns = {
         }
     },
     {
+        id = "Motels",
         label = 'Motels',
         description = 'A cheap place to stay for the night, perfect for those who are on the run.',
         location = vec4(327.56, -205.08, 53.08, 163.5),
@@ -39,6 +42,7 @@ Config.DefaultSpawns = {
         }
     },
     {
+        id = 'Mission_Row',
         label = 'Mission Row',
         description = 'Police Department located in the heart of Los Santos.',
         location = vec4(426.96, -981.24, 30.71, 81.65),
